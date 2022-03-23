@@ -73,7 +73,30 @@ pyspark
 
 ![](<.gitbook/assets/image (1).png>)
 
+#### WordCount Example with Pyspark
 
+* [x] Download a txt file to work on.
+
+```
+wget -O alice.txt https://www.gutenberg.org/files/11/11-0.txt
+```
+
+* [x] Open pyspark on terminal
+
+```
+pyspark
+```
+
+* [x] Put following script with changing the input file path to the path you downloaded alice.txt
+
+```
+input = sc.textFile("/home/ubuntu/alice.txt")
+words = input.flatMap(lambda x: x.split())
+wordCounts = words.countByValue()
+
+for word,count in wordCounts.items():
+	print(word + " " + str(count))
+```
 
 ## Step 5 - Spark with Scala
 
